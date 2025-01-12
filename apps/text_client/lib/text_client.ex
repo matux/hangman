@@ -1,6 +1,6 @@
-defmodule Dictionary do
+defmodule TextClient do
   @moduledoc """
-  Documentation for `Dictionary`.
+  Documentation for `TextClient`.
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule Dictionary do
 
   ## Examples
 
-      iex> Dictionary.hello()
+      iex> TextClient.hello()
       :world
 
   """
