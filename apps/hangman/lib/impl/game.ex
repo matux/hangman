@@ -1,4 +1,7 @@
 defmodule Hangman.Impl.Game do
+  @moduledoc """
+  The game implementation.
+  """
   alias Hangman.Type
 
   @type t :: %__MODULE__{
@@ -28,7 +31,7 @@ defmodule Hangman.Impl.Game do
   end
 
   @spec guess(t, String.t()) :: {t, Type.tally()}
-  def guess(game = %{game_state: state}, _guess)
+  def guess(game = %{game_state: state}, _)
       when state in [:won, :lost] do
     game |> return_with_tally()
   end
@@ -37,6 +40,18 @@ defmodule Hangman.Impl.Game do
     accept_guess(game, guess, MapSet.member?(game.used, guess))
     |> return_with_tally()
   end
+
+  @spec tally(t) :: Type.tally()
+  def tally(game) do
+    %{
+      turns_left: game.turns_left,
+      game_state: game.game_state,
+      letters: reveal_guessed_letters(game),
+      used: game.used |> MapSet.to_list() |> Enum.sort()
+    }
+  end
+
+  ##############################################################################
 
   defp accept_guess(game, _guess, _already_used = true) do
     %{game | game_state: :duplicate_guess}
@@ -66,17 +81,12 @@ defmodule Hangman.Impl.Game do
     %{game | game_state: :bad_guess, turns_left: game.turns_left - 1}
   end
 
-  defp tally(game) do
-    %{
-      turns_left: game.turns_left,
-      game_state: game.game_state,
-      letters: reveal_guessed_letters(game),
-      used: game.used |> MapSet.to_list() |> Enum.sort()
-    }
-  end
-
   defp return_with_tally(game) do
     {game, tally(game)}
+  end
+
+  defp reveal_guessed_letters(game = %{game_state: :lost}) do
+    game.letters
   end
 
   defp reveal_guessed_letters(game) do

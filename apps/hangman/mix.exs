@@ -21,6 +21,7 @@ defmodule Hangman.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:dictionary, in_umbrella: true},
       {:dialyxir, "~> 1.4", only: [:dev], runtime: false}
     ]
