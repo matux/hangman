@@ -1,5 +1,8 @@
 defmodule Hangman do
-  alias Hangman.Impl.Game
+  @moduledoc """
+  Coding Gnome elixir for programmers book
+  """
+  alias Hangman.Game
   alias Hangman.Type
 
   @opaque game :: Game.t()

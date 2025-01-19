@@ -1,6 +1,6 @@
 defmodule ImplGameTest do
   use ExUnit.Case
-  alias Hangman.Impl.Game
+  alias Hangman.Game
 
   test "new game returns structure" do
     game = Game.new_game()

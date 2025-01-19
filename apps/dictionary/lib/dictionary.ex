@@ -1,6 +1,6 @@
 defmodule Dictionary do
   @moduledoc """
-  A module for managing the word list.
+  Data module for the Hangman game.
   """
   alias Dictionary.Server
 

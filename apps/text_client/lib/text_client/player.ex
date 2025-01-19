@@ -1,4 +1,7 @@
-defmodule TextClient.Impl.Player do
+defmodule TextClient.Player do
+  @moduledoc """
+  A module for managing the player interaction.
+  """
   @typep game :: Hangman.game()
   @typep tally :: Hangman.Type.tally()
   @typep state :: {game, tally}
@@ -8,14 +11,6 @@ defmodule TextClient.Impl.Player do
     game = Hangman.new_game()
     tally = Hangman.tally(game)
     interact({game, tally})
-    # IO.puts("Welcome to Hangman!")
-    # IO.puts("Please enter your name: ")
-    # name = IO.gets() |> String.trim()
-    # IO.puts("Hello #{name}!")
-    # IO.puts("Let's play Hangman!")
-    # IO.puts("Please enter a letter: ")
-    # letter = IO.gets() |> String.trim()
-    # IO.puts("You entered: #{letter}")
   end
 
   @spec interact(state) :: :ok

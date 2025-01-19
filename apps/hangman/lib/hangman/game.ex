@@ -1,4 +1,4 @@
-defmodule Hangman.Impl.Game do
+defmodule Hangman.Game do
   @moduledoc """
   The game implementation.
   """
@@ -20,7 +20,7 @@ defmodule Hangman.Impl.Game do
 
   @spec new_game() :: t
   def new_game do
-    new_game(Dictionary.random_word(Dictionary.start_link()))
+    new_game(Dictionary.random_word())
   end
 
   @spec new_game(String.t()) :: t
